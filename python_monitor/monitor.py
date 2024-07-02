@@ -40,8 +40,9 @@ def get_cpu_usage(resource_id):
        for timeserie in item.timeseries:
            for data in timeserie.data:
                cpu_usage = data.average
-               print(f"Time: {data.time_stamp}, CPU Usage: {data.average}%")
-               if cpu_usage > 80:
+               if cpu_usage is not None:
+                print(f"Time: {data.time_stamp}, CPU Usage: {data.average}%")
+                if cpu_usage > 80:
                    print(f"WARNING: CPU usage is higher than 80%! {cpu_usage}%")
 
 
